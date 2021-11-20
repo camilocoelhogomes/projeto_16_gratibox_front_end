@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GlobalStyle from './assets/style/GlobalStyle';
 import RoutesConfig from './routes/RoutesConfig';
-// eslint-disable-next-line func-names
+import UserContext from './Context/UserContext';
+
 const App = function () {
+  const [userSign, setUserSign] = useState();
+
+  const updateUserSign = ({ input, value }) => {
+    const newUserSign = { ...userSign };
+    newUserSign[input] = value;
+    setUserSign(newUserSign);
+  };
+
   return (
-    <div className="App">
+    <UserContext.Provider value={{ userSign, updateUserSign }}>
       <GlobalStyle />
       <RoutesConfig />
-    </div>
+    </UserContext.Provider>
   );
 };
 
