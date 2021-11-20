@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import signUpApi from '../../api/gratiBoxApi';
 import Button from '../../assets/style/Button';
 import Input from '../../assets/style/Input';
 import PageHeader from '../../components/PageHeader';
@@ -9,31 +10,43 @@ import UserContext from '../../Context/UserContext';
 const SignUp = function () {
   const { userSign, updateUserSign } = useContext(UserContext);
 
+  const submitSignUp = (e) => {
+    e.preventDefault();
+    signUpApi(userSign).then((res) => console.log(res));
+  };
+
   return (
-    <StyledSignUp>
+    <StyledSignUp onSubmit={submitSignUp}>
       <PageHeader
         title="Bem vindo ao GratiBox"
       />
       <div className="input-area">
         <Input
           placeholder="Nome"
-          value={(userSign?.name || '')}
-          onChange={(e) => updateUserSign({ input: 'name', value: e.target.value })}
+          value={(userSign?.userName || '')}
+          onChange={(e) => updateUserSign({ input: 'userName', value: e.target.value })}
+          required
         />
         <Input
           placeholder="E-mail"
-          value={(userSign?.email || '')}
-          onChange={(e) => updateUserSign({ input: 'email', value: e.target.value })}
+          value={(userSign?.userEmail || '')}
+          onChange={(e) => updateUserSign({ input: 'userEmail', value: e.target.value })}
+          type="email"
+          required
         />
         <Input
           placeholder="Senha"
-          value={(userSign?.password || '')}
-          onChange={(e) => updateUserSign({ input: 'password', value: e.target.value })}
+          value={(userSign?.userPassword || '')}
+          onChange={(e) => updateUserSign({ input: 'userPassword', value: e.target.value })}
+          type="password"
+          required
         />
         <Input
           placeholder="Confirme a Senha"
-          value={(userSign?.confirmPassword || '')}
-          onChange={(e) => updateUserSign({ input: 'confirmPassword', value: e.target.value })}
+          value={(userSign?.userConfirmPassword || '')}
+          onChange={(e) => updateUserSign({ input: 'userConfirmPassword', value: e.target.value })}
+          type="password"
+          required
         />
       </div>
       <div className="button-area">
