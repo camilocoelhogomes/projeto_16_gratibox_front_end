@@ -20,7 +20,9 @@
     "react-hooks"
   ],
   "rules": {
-    
+    "eslint func-names": [
+      "never"
+    ],
       "react/jsx-no-constructed-context-values": "off",
     
     "react-hooks/rules-of-hooks": "error",
