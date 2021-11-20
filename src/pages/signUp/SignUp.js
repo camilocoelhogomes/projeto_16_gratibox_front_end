@@ -6,6 +6,7 @@ import Button from '../../assets/style/Button';
 import Input from '../../assets/style/Input';
 import PageHeader from '../../components/PageHeader';
 import UserContext from '../../Context/UserContext';
+import PassWordRequirements from './components/PassWordRequirements';
 
 const SignUp = function () {
   const { userSign, updateUserSign } = useContext(UserContext);
@@ -47,6 +48,10 @@ const SignUp = function () {
           onChange={(e) => updateUserSign({ input: 'userConfirmPassword', value: e.target.value })}
           type="password"
           required
+        />
+        <PassWordRequirements
+          password={userSign?.userPassword}
+          passwordConfirm={userSign?.userConfirmPassword}
         />
       </div>
       <div className="button-area">
