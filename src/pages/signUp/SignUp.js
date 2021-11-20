@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import signUpApi from '../../api/gratiBoxApi';
@@ -10,10 +10,20 @@ import PassWordRequirements from './components/PassWordRequirements';
 
 const SignUp = function () {
   const { userSign, updateUserSign } = useContext(UserContext);
+  const [emailError, setEmailError] = useState(false);
   const navigate = useNavigate();
   const submitSignUp = (e) => {
     e.preventDefault();
-    signUpApi(userSign).then(() => navigate('/sign-in'));
+    if (!/^.*(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}).*$/.fit(userSign.userPassword)) {
+      return;
+    }
+    signUpApi(userSign)
+      .then(() => navigate('/sign-in'))
+      .catch((error) => {
+        if (error.response.status === 409) {
+          setEmailError(true);
+        }
+      });
   };
 
   return (
@@ -22,33 +32,53 @@ const SignUp = function () {
         title="Bem vindo ao GratiBox"
       />
       <div className="input-area">
-        <Input
-          placeholder="Nome"
-          value={(userSign?.userName || '')}
-          onChange={(e) => updateUserSign({ input: 'userName', value: e.target.value })}
-          required
-        />
-        <Input
-          placeholder="E-mail"
-          value={(userSign?.userEmail || '')}
-          onChange={(e) => updateUserSign({ input: 'userEmail', value: e.target.value })}
-          type="email"
-          required
-        />
-        <Input
-          placeholder="Senha"
-          value={(userSign?.userPassword || '')}
-          onChange={(e) => updateUserSign({ input: 'userPassword', value: e.target.value })}
-          type="password"
-          required
-        />
-        <Input
-          placeholder="Confirme a Senha"
-          value={(userSign?.userConfirmPassword || '')}
-          onChange={(e) => updateUserSign({ input: 'userConfirmPassword', value: e.target.value })}
-          type="password"
-          required
-        />
+        <div className="error-area">
+          <Input
+            placeholder="Nome"
+            value={(userSign?.userName || '')}
+            onChange={(e) => updateUserSign({ input: 'userName', value: e.target.value })}
+            required
+          />
+          <div className="error-alert">
+            <p />
+          </div>
+        </div>
+        <div className="error-area">
+          <Input
+            placeholder="E-mail"
+            value={(userSign?.userEmail || '')}
+            onChange={(e) => updateUserSign({ input: 'userEmail', value: e.target.value })}
+            type="email"
+            required
+          />
+          <div className="error-alert">
+            <p>{emailError ? 'Email já cadastrado' : ''}</p>
+          </div>
+        </div>
+        <div className="error-area">
+          <Input
+            placeholder="Nome"
+            value={(userSign?.userPassword || '')}
+            onChange={(e) => updateUserSign({ input: 'userPassword', value: e.target.value })}
+            required
+            type="password"
+          />
+          <div className="error-alert">
+            <p />
+          </div>
+        </div>
+        <div className="error-area">
+          <Input
+            placeholder="Nome"
+            value={(userSign?.userConfirmPassword || '')}
+            onChange={(e) => updateUserSign({ input: 'userConfirmPassword', value: e.target.value })}
+            required
+            type="password"
+          />
+          <div className="error-alert">
+            <p />
+          </div>
+        </div>
         <PassWordRequirements
           password={userSign?.userPassword}
           passwordConfirm={userSign?.userConfirmPassword}
@@ -92,5 +122,21 @@ const StyledSignUp = styled.form`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+   .error-area{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .error-alert{
+    height: 12px;
+    padding: 0 18px;
+    p{
+    color: #ffffff;
+    font-family: 'primaryBold';
+    font-size: 12px;
+    line-height: 18px;
+    }
   }
 `;
