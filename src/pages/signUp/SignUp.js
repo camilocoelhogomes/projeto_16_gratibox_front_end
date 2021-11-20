@@ -57,7 +57,7 @@ const SignUp = function () {
         </div>
         <div className="error-area">
           <Input
-            placeholder="Nome"
+            placeholder="Senha"
             value={(userSign?.userPassword || '')}
             onChange={(e) => updateUserSign({ input: 'userPassword', value: e.target.value })}
             required
@@ -69,7 +69,7 @@ const SignUp = function () {
         </div>
         <div className="error-area">
           <Input
-            placeholder="Nome"
+            placeholder="Confirme a Senha"
             value={(userSign?.userConfirmPassword || '')}
             onChange={(e) => updateUserSign({ input: 'userConfirmPassword', value: e.target.value })}
             required
