@@ -20,7 +20,7 @@ const PassWordRequirements = function ({ password, passwordConfirm }) {
       <StyledPassWordRequidement fit={/(?=.*[^A-Za-z0-9])/.test(password)}>
         Deve conter caractores especiais
       </StyledPassWordRequidement>
-      <StyledPassWordRequidement fit={passwordConfirm === password}>
+      <StyledPassWordRequidement fit={password && passwordConfirm === password}>
         Campos de Senha e Confirme a Senha devem ser iguais
       </StyledPassWordRequidement>
     </StyledPassWordRequidements>
