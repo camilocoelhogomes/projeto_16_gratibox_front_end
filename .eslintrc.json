@@ -28,7 +28,7 @@
     "cypress/no-force": "warn",
     "cypress/no-async-tests": "error",
     "cypress/no-pause": "error",
-    "eslint func-names": ["off","never"],
+    "eslint func-names": ["off"],
     "react/jsx-no-constructed-context-values": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
