@@ -1,31 +1,45 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:react-hooks/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb"
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "react-hooks"
+  ],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
     ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-      "react/jsx-filename-extension": [
-        1,
-        {
-          "extensions": [
-            ".js",
-            ".jsx"
-          ]
-        }
-      ],
-    }
+    "react/prop-types": 0,
+    "react/jsx-no-bind": [1,
+      {
+        "ignoreDOMComponents":  false,
+        "ignoreRefs":  false,
+        "allowArrowFunctions":  true,
+        "allowFunctions":  true,
+        "allowBind":  true
+      }
+    ]
+  }
 }
