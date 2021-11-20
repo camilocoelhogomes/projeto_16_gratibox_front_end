@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import signUpApi from '../../api/gratiBoxApi';
 import Button from '../../assets/style/Button';
@@ -9,10 +9,10 @@ import UserContext from '../../Context/UserContext';
 
 const SignUp = function () {
   const { userSign, updateUserSign } = useContext(UserContext);
-
+  const navigate = useNavigate();
   const submitSignUp = (e) => {
     e.preventDefault();
-    signUpApi(userSign).then((res) => console.log(res));
+    signUpApi(userSign).then(() => navigate('/sign-in'));
   };
 
   return (
