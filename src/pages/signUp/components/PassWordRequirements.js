@@ -21,7 +21,7 @@ const PassWordRequirements = function ({ password, passwordConfirm }) {
         Deve conter caractores especiais
       </StyledPassWordRequidement>
       <StyledPassWordRequidement fit={passwordConfirm === password}>
-        Campos de senha e Confirme a Senha devem ser iguais
+        Campos de Senha e Confirme a Senha devem ser iguais
       </StyledPassWordRequidement>
     </StyledPassWordRequidements>
   );

@@ -14,7 +14,7 @@ const SignUp = function () {
   const navigate = useNavigate();
   const submitSignUp = (e) => {
     e.preventDefault();
-    if (!/^.*(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}).*$/.fit(userSign.userPassword)) {
+    if (!/^.*(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}).*$/.test(userSign.userPassword)) {
       return;
     }
     signUpApi(userSign)
@@ -47,7 +47,7 @@ const SignUp = function () {
           <Input
             placeholder="E-mail"
             value={(userSign?.userEmail || '')}
-            onChange={(e) => updateUserSign({ input: 'userEmail', value: e.target.value })}
+            onChange={(e) => { setEmailError(false); updateUserSign({ input: 'userEmail', value: e.target.value }); }}
             type="email"
             required
           />
