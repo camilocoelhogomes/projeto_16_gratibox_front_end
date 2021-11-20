@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import {
+  Link,
+} from 'react-router-dom';
 import PageHeader from '../../components/PageHeader';
 import homeImage from '../../assets/images/image05.webp';
 import Button from '../../assets/style/Button';
@@ -17,12 +20,16 @@ const Home = function () {
       </div>
       <div className="button-area">
         <img src={homeImage} alt="Home" />
-        <Button>
-          Quero Compeçar
-        </Button>
-        <Button type="secondary">
-          Já sou grato
-        </Button>
+        <Link to="/sign-up">
+          <Button>
+            Quero Compeçar
+          </Button>
+        </Link>
+        <Link to="/sign-in">
+          <Button backGround="secondary">
+            Já sou grato
+          </Button>
+        </Link>
       </div>
     </StyledHome>
   );

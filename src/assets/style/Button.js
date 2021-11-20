@@ -6,7 +6,7 @@ const Button = styled.button`
   font-family: 'primaryBold';
   font-size: 18px;
   color: #ffffff;
-  background-color: ${({ type }) => (type === 'secondary' ? 'inherit' : '#8C97EA')};
+  background-color: ${({ backGround }) => (backGround === 'secondary' ? 'inherit' : '#8C97EA')};
   border-radius: 10px;
 `;
 

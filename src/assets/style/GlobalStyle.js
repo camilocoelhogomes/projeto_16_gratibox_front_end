@@ -2,12 +2,18 @@
 import { createGlobalStyle } from 'styled-components';
 import Roboto700 from '../fonts/Roboto/Roboto-Bold.ttf';
 import Roboto300 from '../fonts/Roboto/Roboto-Light.ttf';
+import Roboto500 from '../fonts/Roboto/Roboto-Medium.ttf';
 
 const GlobalStyle = createGlobalStyle`
 
 @font-face {
   font-family: 'primaryBold';
   src: url(${Roboto700}) format('truetype');
+}
+
+@font-face {
+  font-family: 'primaryNormal';
+  src: url(${Roboto500}) format('truetype');
 }
 
 @font-face {
