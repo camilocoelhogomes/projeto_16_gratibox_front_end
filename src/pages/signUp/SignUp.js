@@ -78,11 +78,11 @@ const SignUp = function () {
           <div className="error-alert">
             <p />
           </div>
+          <PassWordRequirements
+            password={userSign?.userPassword}
+            passwordConfirm={userSign?.userConfirmPassword}
+          />
         </div>
-        <PassWordRequirements
-          password={userSign?.userPassword}
-          passwordConfirm={userSign?.userConfirmPassword}
-        />
       </div>
       <div className="button-area">
         <Button type="submit">
