@@ -8,7 +8,6 @@ const ProducOptionsCard = function ({ formData }) {
   const { plansConfig, setPlansConfig } = useContext(PlansConfigContext);
   const [expaded, setExpanded] = useState(true);
   const updatePlansConfig = ({ value }) => {
-    console.log(plansConfig);
     const newPlansConfig = { ...plansConfig };
     if (!plansConfig.productOption) {
       newPlansConfig.productOption = [value];

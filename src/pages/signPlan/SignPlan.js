@@ -20,8 +20,6 @@ const SignPlan = function () {
       .then((res) => setNewSignatureForm(res.data));
   }, []);
 
-  // eslint-disable-next-line max-len
-  console.log();
   return (
     <StyledSignPlan>
       <PageHeader
