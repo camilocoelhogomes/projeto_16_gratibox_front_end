@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../../assets/style/Button';
+import PlansConfigContext from '../../../Context/PlansConfigContext';
 
 const PlanCard = function ({ plan }) {
   const {
     plansDescription,
     plansImg,
+    plansId,
   } = plan;
+  const { updatePlansConfig } = useContext(PlansConfigContext);
+  const navigate = useNavigate();
+  const signPlan = () => {
+    updatePlansConfig({ input: 'userPlan', value: plansId });
+    navigate('/sign-plan');
+  };
 
   return (
     <StyledPlandCard>
@@ -15,7 +24,7 @@ const PlanCard = function ({ plan }) {
         {plansDescription.split('.').map((description) => <h5>{`${description}`}</h5>)}
       </div>
       <div className="button-area">
-        <Button>
+        <Button onClick={signPlan}>
           Assinar
         </Button>
       </div>
