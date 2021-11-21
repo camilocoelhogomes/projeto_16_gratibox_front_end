@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import Home from '../pages/home/Home';
 import SignUp from '../pages/signUp/SignUp';
+import SignIn from '../pages/signIn/SignIn';
 
 const RoutesConfig = function () {
   return (
@@ -13,6 +14,7 @@ const RoutesConfig = function () {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/sign-up" element={<SignUp />} />
+        <Route exact path="/sign-in" element={<SignIn />} />
       </Routes>
     </BrowserRouter>
   );
