@@ -23,9 +23,11 @@ const signInApi = ({
 });
 
 const availablePlansApi = () => axios.get(`${API}/plans`);
+const newSignatureFormApi = () => axios.get(`${API}/new-signature`);
 
 export {
   signUpApi,
   signInApi,
   availablePlansApi,
+  newSignatureFormApi,
 };
