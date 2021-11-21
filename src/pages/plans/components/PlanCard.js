@@ -33,7 +33,7 @@ const StyledPlandCard = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   gap: 20px;
   .plan-img{
     border-radius: 25px;
