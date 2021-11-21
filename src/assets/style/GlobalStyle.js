@@ -85,6 +85,14 @@ h1{
   text-align: center;
   }
 
+  h5{
+    font-family: 'primaryBold';
+    color: #4D65A8;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: justify;
+  }
+
   h6{
     font-family: 'primaryLigth';
     color: #FFFFFF;

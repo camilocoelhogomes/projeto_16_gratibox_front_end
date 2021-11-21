@@ -7,6 +7,7 @@ import {
 import Home from '../pages/home/Home';
 import SignUp from '../pages/signUp/SignUp';
 import SignIn from '../pages/signIn/SignIn';
+import Plans from '../pages/plans/Plans';
 
 const RoutesConfig = function () {
   return (
@@ -15,6 +16,8 @@ const RoutesConfig = function () {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/sign-up" element={<SignUp />} />
         <Route exact path="/sign-in" element={<SignIn />} />
+        <Route exact path="/plans" element={<Plans />} />
+
       </Routes>
     </BrowserRouter>
   );

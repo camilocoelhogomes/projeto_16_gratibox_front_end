@@ -22,7 +22,10 @@ const signInApi = ({
   userPassword,
 });
 
+const availablePlansApi = () => axios.get(`${API}/plans`);
+
 export {
   signUpApi,
   signInApi,
+  availablePlansApi,
 };
