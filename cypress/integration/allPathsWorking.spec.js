@@ -16,4 +16,14 @@ describe('Login', () => {
 
     cy.url().should('equal', 'http://localhost:3000/sign-in');
   });
+
+  it('should login successfully', () => {
+    cy.visit('http://localhost:3000/sign-in');
+
+    cy.get('input[placeholder=E-mail]').type(newUser.userEmail);
+    cy.get('input[placeholder=Senha]').type(newUser.userPassword);
+    cy.get('button[type=submit]').click();
+
+    cy.url().should('equal', 'http://localhost:3000/plans');
+  });
 });
