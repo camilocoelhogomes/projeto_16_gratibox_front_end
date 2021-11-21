@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { availablePlansApi } from '../../api/gratiBoxApi';
 import PageHeader from '../../components/PageHeader';
 import UserContext from '../../Context/UserContext';
+import PlanCard from './components/PlanCard';
 
 const Plans = function () {
   const { userData } = useContext(UserContext);
@@ -12,7 +13,7 @@ const Plans = function () {
 
   useEffect(() => {
     if (!userData) navigate('/');
-    availablePlansApi().then((res) => setAvailablePlans(res.data));
+    availablePlansApi().then((res) => { setAvailablePlans(res.data); });
   }, []);
 
   return (
@@ -22,7 +23,7 @@ const Plans = function () {
         subTitle="Você ainda não assinou um plano, que tal começar agora?"
       />
       {
-        availablePlans ? availablePlans.map((item) => item.plansName) : ''
+        availablePlans ? availablePlans.map((plan) => <PlanCard key={plan.plansId} plan={plan} />) : ''
       }
     </StyledPlans>
   );
