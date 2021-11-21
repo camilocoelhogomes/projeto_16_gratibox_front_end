@@ -7,6 +7,7 @@ import { newSignatureFormApi } from '../../api/gratiBoxApi';
 import signImage from '../../assets/images/image03.jpg';
 import PlanOptionCard from './components/PlanOptionCard';
 import DeliveryDateOptionCard from './components/DeliveryDateOptionCard';
+import ProducOptionsCard from './components/ProducOptionsCard';
 
 const SignPlan = function () {
   const { userData } = useContext(UserContext);
@@ -36,6 +37,9 @@ const SignPlan = function () {
                 formData={newSignatureForm}
               />
               <DeliveryDateOptionCard
+                formData={newSignatureForm}
+              />
+              <ProducOptionsCard
                 formData={newSignatureForm}
               />
             </div>

@@ -6,10 +6,10 @@ import PlansConfigContext from '../../../Context/PlansConfigContext';
 
 const DeliveryDateOptionCard = function ({ formData }) {
   const { plansConfig, updatePlansConfig } = useContext(PlansConfigContext);
-  const [expaded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
   return (
     <StyledDeliveryDateOptionCard>
-      <div className="plan-option-header" onClick={() => setExpanded(!expaded)}>
+      <div className="plan-option-header" onClick={() => setExpanded(!expanded)}>
         <h5>
           Data de Entrega:
           {' '}
@@ -36,10 +36,10 @@ const DeliveryDateOptionCard = function ({ formData }) {
                 (option) => option.deliveryDateId === plansConfig.userDeliveryDateId,
               )[0]?.deliveryDateName}`}
         </h5>
-        {expaded ? <IoArrowUpOutline size="18px" color="#4D65A8" /> : <IoArrowDownOutline size="18px" color="#4D65A8" />}
+        {expanded ? <IoArrowUpOutline size="18px" color="#4D65A8" /> : <IoArrowDownOutline size="18px" color="#4D65A8" />}
       </div>
       {
-        expaded
+        expanded
           ? (
             <div className="choosen-area">
               {

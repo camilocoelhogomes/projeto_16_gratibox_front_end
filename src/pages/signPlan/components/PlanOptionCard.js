@@ -6,7 +6,7 @@ import PlansConfigContext from '../../../Context/PlansConfigContext';
 
 const PlanOptionCard = function ({ formData }) {
   const { plansConfig, updatePlansConfig } = useContext(PlansConfigContext);
-  const [expaded, setExpanded] = useState(false);
+  const [expaded, setExpanded] = useState(true);
 
   return (
     <StyledPlanOptionCard>
