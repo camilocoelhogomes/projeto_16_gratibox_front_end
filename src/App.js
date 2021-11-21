@@ -5,6 +5,7 @@ import UserContext from './Context/UserContext';
 
 const App = function () {
   const [userSign, setUserSign] = useState();
+  const [userData, setUserData] = useState();
 
   const updateUserSign = ({ input, value }) => {
     const newUserSign = { ...userSign };
@@ -13,7 +14,10 @@ const App = function () {
   };
 
   return (
-    <UserContext.Provider value={{ userSign, updateUserSign }}>
+    <UserContext.Provider value={{
+      userSign, updateUserSign, userData, setUserData,
+    }}
+    >
       <GlobalStyle />
       <RoutesConfig />
     </UserContext.Provider>

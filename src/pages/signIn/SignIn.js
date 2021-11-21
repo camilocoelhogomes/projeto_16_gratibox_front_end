@@ -1,20 +1,37 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from '../../assets/style/Input';
 import PageHeader from '../../components/PageHeader';
 import UserContext from '../../Context/UserContext';
 import Button from '../../assets/style/Button';
+import { signInApi } from '../../api/gratiBoxApi';
 
 const SignIn = function () {
-  const { userSign, updateUserSign } = useContext(UserContext);
+  const { userSign, updateUserSign, setUserData } = useContext(UserContext);
+  const [signInError, setSignInError] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     updateUserSign({ input: 'userPassword', value: '' });
   }, []);
 
+  const submitSignIn = (e) => {
+    e.preventDefault();
+    signInApi(userSign)
+      .then((res) => {
+        setUserData(res.data);
+        navigate('/plans');
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {
+          setSignInError(true);
+        }
+      });
+  };
+
   return (
-    <StyledSignIn>
+    <StyledSignIn onSubmit={submitSignIn}>
       <PageHeader
         title="Bem vindo ao GratiBox"
       />
@@ -24,7 +41,7 @@ const SignIn = function () {
           <Input
             placeholder="E-mail"
             value={(userSign?.userEmail || '')}
-            onChange={(e) => updateUserSign({ input: 'userEmail', value: e.target.value })}
+            onChange={(e) => { setSignInError(false); updateUserSign({ input: 'userEmail', value: e.target.value }); }}
             required
             type="email"
           />
@@ -35,12 +52,12 @@ const SignIn = function () {
             <Input
               placeholder="Senha"
               value={(userSign?.userPassword || '')}
-              onChange={(e) => updateUserSign({ input: 'userPassword', value: e.target.value })}
+              onChange={(e) => { setSignInError(false); updateUserSign({ input: 'userPassword', value: e.target.value }); }}
               required
               type="password"
             />
             <div className="error-alert">
-              <p />
+              <p>{signInError ? 'E-mail ou Senha incorretos' : ''}</p>
             </div>
           </div>
         </div>
@@ -48,7 +65,7 @@ const SignIn = function () {
 
       <div className="button-area">
         <Button type="submit">
-          Cadastrar
+          Login
         </Button>
         <Link to="/sign-up">
           <Button backGround="secondary">

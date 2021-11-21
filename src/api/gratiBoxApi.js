@@ -14,4 +14,15 @@ const signUpApi = ({
   userConfirmPassword,
 });
 
-export default signUpApi;
+const signInApi = ({
+  userEmail,
+  userPassword,
+}) => axios.post(`${API}/sign-in`, {
+  userEmail,
+  userPassword,
+});
+
+export {
+  signUpApi,
+  signInApi,
+};
