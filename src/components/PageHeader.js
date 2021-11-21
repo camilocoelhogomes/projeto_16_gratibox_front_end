@@ -11,7 +11,7 @@ const PageHeader = function ({ title, subTitle }) {
         subTitle
           ? (
             <div>
-              <h6>{subTitle}</h6>
+              <h6 className="header-subtitle">{subTitle}</h6>
             </div>
           )
           : ''
@@ -29,4 +29,7 @@ const StyledPageHeader = styled.div`
   gap: 22px;
   justify-content: center;
   flex-direction: column;
+  .header-subtitle{
+    text-align: justify;
+  }
 `;
