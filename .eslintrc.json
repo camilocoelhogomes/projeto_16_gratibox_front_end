@@ -31,7 +31,7 @@
     "eslint func-names": ["off"],
     "react/jsx-no-constructed-context-values": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "off",
     "react/jsx-filename-extension": [
       1,
       {

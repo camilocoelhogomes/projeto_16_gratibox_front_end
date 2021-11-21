@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import signUpApi from '../../api/gratiBoxApi';
+import { signUpApi } from '../../api/gratiBoxApi';
 import Button from '../../assets/style/Button';
 import Input from '../../assets/style/Input';
 import PageHeader from '../../components/PageHeader';
