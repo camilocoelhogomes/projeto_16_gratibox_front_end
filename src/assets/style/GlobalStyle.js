@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import Roboto700 from '../fonts/Roboto/Roboto-Bold.ttf';
 import Roboto300 from '../fonts/Roboto/Roboto-Light.ttf';
 import Roboto500 from '../fonts/Roboto/Roboto-Medium.ttf';
+import Roboto400 from '../fonts/Roboto/Roboto-Regular.ttf';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -19,6 +20,11 @@ const GlobalStyle = createGlobalStyle`
 @font-face {
   font-family: 'primaryLigth';
   src: url(${Roboto300}) format('truetype');
+}
+
+@font-face {
+  font-family: 'primaryRegular';
+  src: url(${Roboto400}) format('truetype');
 }
 
 html, body, div, span, applet, object, iframe,
@@ -103,6 +109,13 @@ h1{
 
   img{
     width: 100%;
+  }
+
+  label{
+    font-family: 'primaryRegular';
+    font-size: 18px;
+    line-height: 21px;
+    color: #4D65A8;
   }
 `;
 

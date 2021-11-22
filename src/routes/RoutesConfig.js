@@ -8,6 +8,9 @@ import Home from '../pages/home/Home';
 import SignUp from '../pages/signUp/SignUp';
 import SignIn from '../pages/signIn/SignIn';
 import Plans from '../pages/plans/Plans';
+import SignPlan from '../pages/signPlan/SignPlan';
+import NewSignatureForm from '../pages/signPlan/components/NewSignatureForm';
+import NewAddressForm from '../pages/signPlan/components/NewAddressForm';
 
 const RoutesConfig = function () {
   return (
@@ -17,7 +20,10 @@ const RoutesConfig = function () {
         <Route exact path="/sign-up" element={<SignUp />} />
         <Route exact path="/sign-in" element={<SignIn />} />
         <Route exact path="/plans" element={<Plans />} />
-
+        <Route exact path="/sign-plan" element={<SignPlan />}>
+          <Route exact path="/sign-plan" element={<NewSignatureForm />} />
+          <Route exact path="/sign-plan/address" element={<NewAddressForm />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

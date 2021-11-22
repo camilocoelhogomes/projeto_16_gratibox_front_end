@@ -26,7 +26,7 @@ const App = function () {
       userSign, updateUserSign, userData, setUserData,
     }}
     >
-      <PlansConfigContext.Provider value={{ plansConfig, updatePlansConfig }}>
+      <PlansConfigContext.Provider value={{ plansConfig, updatePlansConfig, setPlansConfig }}>
         <GlobalStyle />
         <RoutesConfig />
       </PlansConfigContext.Provider>
