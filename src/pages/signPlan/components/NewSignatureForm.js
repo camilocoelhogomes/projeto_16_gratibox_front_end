@@ -11,7 +11,7 @@ import PlansConfigContext from '../../../Context/PlansConfigContext';
 
 const NewSignatureForm = function () {
   const [newSignatureForm, setNewSignatureForm] = useState();
-  const { plansConfig } = useContext(PlansConfigContext);
+  const { plansConfig, updatePlansConfig } = useContext(PlansConfigContext);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
@@ -25,6 +25,18 @@ const NewSignatureForm = function () {
       || !plansConfig.userDeliveryDateId
       || !plansConfig.productOption.length
     ) { return setError(true); }
+    updatePlansConfig({
+      input: 'address',
+      value: {
+        completeName: '',
+        cep: '',
+        state: '',
+        city: '',
+        neighborhood: '',
+        street: '',
+        number: '',
+      },
+    });
     setError(false);
     return navigate('/sign-plan/address');
   };
