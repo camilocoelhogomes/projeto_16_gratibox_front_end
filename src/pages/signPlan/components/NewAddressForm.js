@@ -6,21 +6,30 @@ import Button from '../../../assets/style/Button';
 import PlansConfigContext from '../../../Context/PlansConfigContext';
 import { FormInput } from '../../../assets/style/Input';
 import getCep from '../../../api/brasilApi';
+import UserContext from '../../../Context/UserContext';
+import { newSignatureApi } from '../../../api/gratiBoxApi';
 
 const NewAddressForm = function () {
   const { plansConfig, updatePlansConfig } = useContext(PlansConfigContext);
+  const { userData, setUserData } = useContext(UserContext);
   const [address, setAddress] = useState();
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log(plansConfig);
-    return navigate('/sign-plan/address');
+
+    newSignatureApi({
+      token: userData.userToken,
+      userDeliveryDateId: plansConfig.userDeliveryDateId,
+      userProductOptionsId: plansConfig.productOption,
+      userAddress: { ...plansConfig.address, cep: plansConfig.address.cep.replace(/\D/g, '') },
+    }).then((res) => { setUserData(res.data); navigate('/plan-info'); })
+      .catch(() => { setError(true); });
   };
 
   useEffect(() => {
-    if (!plansConfig.address) navigate('/sign-plan');
+    if (!plansConfig?.address) navigate('/sign-plan');
   }, []);
 
   const updateAddress = ({ input, value }) => {
@@ -34,6 +43,7 @@ const NewAddressForm = function () {
             ...res.data,
             completeName: address.completeName,
             cep: res.data.cep.replace(/^([\d]{5})-*([\d]{1})/, '$1-$2'),
+            number: address.number,
           },
         }))
         .catch(() => {

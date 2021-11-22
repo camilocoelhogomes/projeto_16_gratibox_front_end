@@ -21,9 +21,9 @@ const NewSignatureForm = function () {
 
   const submitForm = (e) => {
     e.preventDefault();
-    if (!plansConfig.productOption
+    if (!plansConfig.userProductOptionsId
       || !plansConfig.userDeliveryDateId
-      || !plansConfig.productOption.length
+      || !plansConfig.userProductOptionsId.length
     ) { return setError(true); }
     updatePlansConfig({
       input: 'address',
