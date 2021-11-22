@@ -65,7 +65,7 @@ const StyledProducOptionsCard = styled.div`
   padding: 12px;
   border-radius: 5px;
   gap: 8px;
-
+width:100%;
   .plan-option-header{
     display: flex;
     justify-content: space-between;

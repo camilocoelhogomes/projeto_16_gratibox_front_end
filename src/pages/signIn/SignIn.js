@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
-import Input from '../../assets/style/Input';
+import { Input } from '../../assets/style/Input';
 import PageHeader from '../../components/PageHeader';
 import UserContext from '../../Context/UserContext';
 import Button from '../../assets/style/Button';
