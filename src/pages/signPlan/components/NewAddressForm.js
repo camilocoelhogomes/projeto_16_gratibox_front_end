@@ -27,7 +27,6 @@ const NewAddressForm = function () {
     const newAddress = { ...address };
     newAddress[input] = value;
     if (input === 'cep' && value.length === 9) {
-      console.log('oi');
       getCep({ cep: value })
         .then((res) => updatePlansConfig({
           input: 'address',
