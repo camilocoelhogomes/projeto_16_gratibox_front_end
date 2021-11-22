@@ -40,7 +40,7 @@ const NewAddressForm = function () {
         <FormInput
           placeholder="CEP"
           value={plansConfig?.address.cep}
-          onChange={(e) => updateAddress({ input: 'cep', value: e.target.value })}
+          onChange={(e) => updateAddress({ input: 'cep', value: e.target.value.replace(/^([\d]{5})-*([\d]{1})/, '$1-$2') })}
         />
         <FormInput
           placeholder="Endereço"
