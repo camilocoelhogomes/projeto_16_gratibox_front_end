@@ -21,7 +21,11 @@ const SignIn = function () {
     signInApi(userSign)
       .then((res) => {
         setUserData(res.data);
-        navigate('/plans');
+        if (res.data.userPlanSignatureDate) {
+          navigate('/plan-info');
+        } else {
+          navigate('/plans');
+        }
       })
       .catch(() => {
         setSignInError(true);

@@ -11,6 +11,7 @@ import Plans from '../pages/plans/Plans';
 import SignPlan from '../pages/signPlan/SignPlan';
 import NewSignatureForm from '../pages/signPlan/components/NewSignatureForm';
 import NewAddressForm from '../pages/signPlan/components/NewAddressForm';
+import PlanInfo from '../pages/planInfo/PlanInfo';
 
 const RoutesConfig = function () {
   return (
@@ -24,6 +25,7 @@ const RoutesConfig = function () {
           <Route exact path="/sign-plan" element={<NewSignatureForm />} />
           <Route exact path="/sign-plan/address" element={<NewAddressForm />} />
         </Route>
+        <Route exact path="/plan-info" element={<PlanInfo />} />
       </Routes>
     </BrowserRouter>
   );

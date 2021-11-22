@@ -32,10 +32,6 @@ const StyledSignPlan = styled.div`
   padding: 43px 25px 0px 25px;
   justify-content: center;
   gap: 43px;
-  
-  .form-area{
-   
-  }
 
   .form-img{
     border-radius: 10px;
